@@ -11,7 +11,7 @@ public class Transfer {
 
     String originAccount;
     String destinationAccount;
-    Integer value;
+    double value;
     LocalDateTime dateTransfer;
     LocalDateTime dateScheduling;
 

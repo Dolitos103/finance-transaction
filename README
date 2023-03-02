@@ -1,0 +1,5 @@
+proximos passos:
+
+- criação de metodos para salva informações na base h2
+- Criação de service com metodos de chamada ao repository
+- criação de testes unitarios para calculo de taxas
