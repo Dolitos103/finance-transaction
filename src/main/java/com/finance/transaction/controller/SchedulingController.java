@@ -1,5 +1,6 @@
 package com.finance.transaction.controller;
 
+import com.finance.transaction.model.Person;
 import com.finance.transaction.model.RequestTransfer;
 import com.finance.transaction.model.Transfer;
 import com.finance.transaction.service.IValidateValueAndRate;
@@ -19,13 +20,16 @@ public class SchedulingController {
         return "Olá, mundo!";
     }
 
-    @PostMapping("/salvar")
-    public ResponseEntity<String> salvar(@RequestBody RequestTransfer requestTransfer) {
-
-        Transfer transfer = new Transfer();
-
-        validateValueAndRate.validateValueAndRate(transfer);
+    @PostMapping("/createFinanceTransaction")
+    public ResponseEntity<String> createFinanceTransaction(@RequestBody RequestTransfer requestTransfer) {
+//        validateValueAndRate.validateValueAndRate(requestTransfer);
 
         return new ResponseEntity<>("Objeto salvo com sucesso!", HttpStatus.CREATED);
+    }
+
+    @PostMapping("/createPerson")
+    public ResponseEntity<String> createPerson(@RequestBody Person person) {
+        // lógica para salvar a pessoa
+        return ResponseEntity.ok("Person created successfully");
     }
 }
