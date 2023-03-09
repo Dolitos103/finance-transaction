@@ -8,7 +8,7 @@ import com.finance.transaction.model.Transfer;
 
 import java.time.LocalDateTime;
 
-public class RequestTransferTotransferConverter implements Converter<RequestTransfer, Transfer> {
+public class RequestTransferToTransferConverter implements Converter<RequestTransfer, Transfer> {
     @Override
     public Transfer convert(RequestTransfer requestTransfer) {
         Transfer transfer = new Transfer();
