@@ -22,7 +22,7 @@ public class SchedulingController {
 
     @PostMapping("/createFinanceTransaction")
     public ResponseEntity<String> createFinanceTransaction(@RequestBody RequestTransfer requestTransfer) {
-//        validateValueAndRate.validateValueAndRate(requestTransfer);
+        validateValueAndRate.validateValueAndRate(requestTransfer);
 
         return new ResponseEntity<>("Objeto salvo com sucesso!", HttpStatus.CREATED);
     }

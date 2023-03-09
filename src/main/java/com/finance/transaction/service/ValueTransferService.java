@@ -8,9 +8,13 @@ public class ValueTransferService implements IValidateValueAndRate {
 
     Taxa taxa;
 
+    RequestTransferTotransferConverter requestTransferTotransferConverter;
+
     public ResponseTransfer validateValueAndRate(RequestTransfer requestTransfer){
-        Transfer transfer = new Transfer();
+
+        Transfer transfer = requestTransferTotransferConverter.convert(requestTransfer);
         taxa.throughputCalculation(transfer);
+
         ResponseTransfer responseTransfer = new ResponseTransfer();
 
         return responseTransfer;
