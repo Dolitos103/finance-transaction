@@ -2,7 +2,7 @@ package com.finance.transaction.controller;
 
 import com.finance.transaction.model.RequestTransfer;
 import com.finance.transaction.model.ResponseTransfer;
-import com.finance.transaction.repository.TransferEntity;
+import com.finance.transaction.model.Transfer;
 import com.finance.transaction.repository.TransferRepository;
 import com.finance.transaction.service.IValidateValueAndRate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ public class SchedulingController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<TransferEntity> TransactionsForId(@PathVariable Long id){
+    public ResponseEntity<Transfer> getFinanceTransaction(@PathVariable Long id){
         return ResponseEntity.ok(transferRepository.findById(id).get());
     }
 
