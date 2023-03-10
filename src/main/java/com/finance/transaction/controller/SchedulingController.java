@@ -1,25 +1,22 @@
 package com.finance.transaction.controller;
 
-import com.finance.transaction.model.Person;
 import com.finance.transaction.model.RequestTransfer;
 import com.finance.transaction.model.ResponseTransfer;
-import com.finance.transaction.model.Transfer;
+import com.finance.transaction.repository.TransferEntity;
+import com.finance.transaction.repository.TransferRepository;
 import com.finance.transaction.service.IValidateValueAndRate;
-import com.finance.transaction.service.Taxa;
-import org.springframework.http.HttpStatus;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
 public class SchedulingController {
+    @Autowired
+    private IValidateValueAndRate validateValueAndRate;
 
-    IValidateValueAndRate validateValueAndRate;
-
-    @GetMapping("/mensagem")
-    public String exibirMensagem() {
-        return "Olá, mundo!";
-    }
+    @Autowired
+    private TransferRepository transferRepository;
 
     @PostMapping("/createFinanceTransaction")
     public ResponseEntity<ResponseTransfer> createFinanceTransaction(@RequestBody RequestTransfer requestTransfer) {
@@ -31,6 +28,11 @@ public class SchedulingController {
         } else {
             return ResponseEntity.ok(responseTransfer);
         }
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<TransferEntity> TransactionsForId(@PathVariable Long id){
+        return ResponseEntity.ok(transferRepository.findById(id).get());
     }
 
 }

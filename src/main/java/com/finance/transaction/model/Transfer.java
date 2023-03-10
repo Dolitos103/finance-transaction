@@ -1,19 +1,19 @@
 package com.finance.transaction.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
-@Setter
-@Getter
+@Data
 public class Transfer {
 
-    String originAccount;
-    String destinationAccount;
-    double value;
-    LocalDateTime dateTransfer;
-    LocalDateTime dateScheduling;
+    private String originAccount;
 
+    private String destinationAccount;
 
+    private double value;
+
+    private LocalDateTime dateTransfer;
+
+    private LocalDateTime dateScheduling;
 }

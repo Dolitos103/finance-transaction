@@ -3,12 +3,15 @@ package com.finance.transaction.service;
 import com.finance.transaction.model.RequestTransfer;
 import com.finance.transaction.model.ResponseTransfer;
 import com.finance.transaction.model.Transfer;
+import com.finance.transaction.repository.TransferEntity;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ValueTransferService implements IValidateValueAndRate {
 
-    Taxa taxa;
+    private Taxa taxa;
 
-    RequestTransferToTransferConverter requestTransferToTransferConverter;
+    private RequestTransferToTransferConverter requestTransferToTransferConverter;
 
     public ResponseTransfer validateValueAndRate(RequestTransfer requestTransfer){
 

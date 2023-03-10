@@ -1,7 +1,6 @@
 package com.finance.transaction.service;
 
 import com.finance.transaction.model.Transfer;
-
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
@@ -28,7 +27,7 @@ public class TaxaTypeC implements Taxa {
                 break;
         }
 
-        transfer.setValue(transfer.getValue() + transfer.getValue() * rate);
+        transfer.setValue((int) (transfer.getValue() + transfer.getValue() * rate));
 
         return transfer;
     }
