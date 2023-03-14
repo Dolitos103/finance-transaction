@@ -9,28 +9,21 @@ public class TaxaTypeC implements Taxa {
     public Transfer throughputCalculation(Transfer transfer) {
 
         LocalDateTime currentDate = LocalDateTime.now();
-        long differenceDays = ChronoUnit.DAYS.between(transfer.getDateScheduling(), currentDate);
+        long differenceDays = ChronoUnit.DAYS.between(currentDate, transfer.getDateScheduling());
 
-        double rate;
-        switch ((int) (differenceDays / 10)) {
-            case 1:
-                rate = 0.082; // 8.2%
-                break;
-            case 2:
-                rate = 0.069; // 6.9%
-                break;
-            case 3:
-                rate = 0.047; // 4.7%
-                break;
-            case 4:
-                rate = 0.017; // 1.7%
-                break;
-            default:
-                rate = 0; // 0%
-                break;
+        double rate = 0;
+
+        if (differenceDays > 10 && differenceDays <= 20) {
+            rate = 0.082; // 8.2%
+        } else if (differenceDays > 20 && differenceDays <= 30) {
+            rate = 0.069; // 6.9%
+        } else if (differenceDays > 30 && differenceDays <= 40) {
+            rate = 0.047; // 4.7%
+        } else if (differenceDays > 40) {
+            rate = 0.017; // 1.7%
         }
 
-        transfer.setValue((int) (transfer.getValue() + transfer.getValue() * rate));
+        transfer.setValue(transfer.getValue() + transfer.getValue() * rate);
 
         return transfer;
     }
