@@ -23,7 +23,7 @@ public class SchedulingController {
 
         ResponseTransfer responseTransfer = validateValueAndRate.validateValueAndRate(requestTransfer);
 
-        if (responseTransfer == null) {
+        if (responseTransfer.getResponse().isEmpty()) {
             return ResponseEntity.notFound().build();
         } else {
             return ResponseEntity.ok(responseTransfer);

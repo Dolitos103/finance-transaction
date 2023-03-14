@@ -13,7 +13,7 @@ public class TaxaTypeB implements Taxa {
 
         long differenceDays = ChronoUnit.DAYS.between(transfer.getDateTransfer(), transfer.getDateScheduling());
 
-        if (differenceDays <= 10) {
+        if (differenceDays != 0 && differenceDays <= 10) {
             transfer.setValue(transfer.getValue() + FEE_UP_TO_TEN_DAYS);
         }
 

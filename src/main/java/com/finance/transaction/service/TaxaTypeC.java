@@ -22,8 +22,11 @@ public class TaxaTypeC implements Taxa {
             case 3:
                 rate = 0.047; // 4.7%
                 break;
-            default:
+            case 4:
                 rate = 0.017; // 1.7%
+                break;
+            default:
+                rate = 0; // 0%
                 break;
         }
 

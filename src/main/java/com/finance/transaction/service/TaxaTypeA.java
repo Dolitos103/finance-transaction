@@ -11,7 +11,7 @@ public class TaxaTypeA implements Taxa {
     public Transfer throughputCalculation(Transfer transfer) {
 
         if(Objects.equals(transfer.getDateTransfer(), transfer.getDateScheduling())){
-            double ThreePercent = 0.3;
+            double ThreePercent = 0.03;
             double valuePlusThreePercent = transfer.getValue()*ThreePercent;
             transfer.setValue(transfer.getValue() + valuePlusThreePercent + RATE_OF_THREE_REAIS);
         }

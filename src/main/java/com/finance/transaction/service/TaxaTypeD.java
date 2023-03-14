@@ -4,18 +4,19 @@ import com.finance.transaction.model.Transfer;
 
 public class TaxaTypeD implements Taxa {
 
-    TaxaTypeA taxaTypeA;
-    TaxaTypeB taxaTypeB;
-    TaxaTypeC taxaTypeC;
-
     @Override
     public Transfer throughputCalculation(Transfer transfer) {
-        if(transfer.getValue() <= 1000){
-            taxaTypeA.throughputCalculation(transfer);
+
+        Taxa taxaA = new TaxaTypeA();
+        Taxa taxaB = new TaxaTypeB();
+        Taxa taxaC = new TaxaTypeC();
+
+        if(transfer.getValue() == 1000){
+            taxaA.throughputCalculation(transfer);
         }else if(transfer.getValue() >= 1001 && transfer.getValue() <= 2000) {
-            taxaTypeB.throughputCalculation(transfer);
+            taxaB.throughputCalculation(transfer);
         } else if (transfer.getValue() > 2000) {
-            taxaTypeC.throughputCalculation(transfer);
+            taxaC.throughputCalculation(transfer);
         }else{
             System.out.println("Erro ao tentar pegar taxa de juros");
         }

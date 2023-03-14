@@ -9,11 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.Random;
 
 @Component
 public class RequestTransferToTransferConverter implements Converter<RequestTransfer, Transfer> {
-    @Autowired
-    private Taxa taxa;
 
     @Override
     public Transfer convert(RequestTransfer requestTransfer) {
@@ -21,9 +20,14 @@ public class RequestTransferToTransferConverter implements Converter<RequestTran
         transfer.setOriginAccount(requestTransfer.getOriginAccount());
         transfer.setDestinationAccount(requestTransfer.getDestinationAccount());
         transfer.setValue(requestTransfer.getValue());
-        transfer.setDateTransfer(LocalDateTime.parse(requestTransfer.getDateTransfer()));
-        transfer.setDateScheduling(LocalDateTime.parse(requestTransfer.getDateScheduling()));
-        taxa.throughputCalculation(transfer);
+        transfer.setDateTransfer(requestTransfer.getDateTransfer());
+        transfer.setDateScheduling(requestTransfer.getDateScheduling());
+        Taxa taxaA = new TaxaTypeA();
+        Taxa taxaB = new TaxaTypeB();
+        Taxa taxaC = new TaxaTypeC();
+        taxaA.throughputCalculation(transfer);
+        taxaB.throughputCalculation(transfer);
+        taxaC.throughputCalculation(transfer);
         return transfer;
 
     }

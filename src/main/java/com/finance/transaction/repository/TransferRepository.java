@@ -9,5 +9,4 @@ import java.util.List;
 @Repository
 public interface TransferRepository extends JpaRepository<Transfer, Long> {
 
-    void saveAll(Transfer transferEntity);
 }
