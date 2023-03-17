@@ -4,7 +4,7 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 @Data
-public class RequestTransfer {
+public class RequestTransferModel {
 
     String originAccount;
     String destinationAccount;

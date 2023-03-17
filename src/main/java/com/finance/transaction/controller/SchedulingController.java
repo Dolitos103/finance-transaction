@@ -1,10 +1,10 @@
 package com.finance.transaction.controller;
 
-import com.finance.transaction.model.RequestTransfer;
-import com.finance.transaction.model.ResponseTransfer;
-import com.finance.transaction.model.Transfer;
-import com.finance.transaction.service.IConsultFinanceTransaction;
-import com.finance.transaction.service.IValidateValueAndRate;
+import com.finance.transaction.model.RequestTransferModel;
+import com.finance.transaction.model.ResponseTransferModel;
+import com.finance.transaction.model.TransferModel;
+import com.finance.transaction.service.IConsultFinanceTransactionService;
+import com.finance.transaction.service.IValidateValueAndRateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.ObjectUtils;
@@ -14,32 +14,32 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api")
 public class SchedulingController {
     @Autowired
-    IValidateValueAndRate validateValueAndRate;
+    IValidateValueAndRateService validateValueAndRate;
 
     @Autowired
-    IConsultFinanceTransaction consultFinanceTransaction;
+    IConsultFinanceTransactionService consultFinanceTransaction;
 
     @PostMapping("/createFinanceTransaction")
-    public ResponseEntity<ResponseTransfer> createFinanceTransaction(@RequestBody RequestTransfer requestTransfer) {
+    public ResponseEntity<ResponseTransferModel> createFinanceTransaction(@RequestBody RequestTransferModel requestTransfer) {
 
-        ResponseTransfer responseTransfer = validateValueAndRate.validateValueAndRate(requestTransfer);
+        ResponseTransferModel responseTransferModel = validateValueAndRate.validateValueAndRate(requestTransfer);
 
-        if (responseTransfer.getResponse().isEmpty()) {
+        if (responseTransferModel.getResponse().isEmpty()) {
             return ResponseEntity.notFound().build();
         } else {
-            return ResponseEntity.ok(responseTransfer);
+            return ResponseEntity.ok(responseTransferModel);
         }
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Transfer> getFinanceTransaction(@PathVariable Long id) {
+    public ResponseEntity<TransferModel> getFinanceTransaction(@PathVariable Long id) {
 
-        Transfer transfer = consultFinanceTransaction.getFinanceTransactionById(id);
+        TransferModel transferModel = consultFinanceTransaction.getFinanceTransactionById(id);
 
-        if (ObjectUtils.isEmpty(transfer)) {
+        if (ObjectUtils.isEmpty(transferModel)) {
             return ResponseEntity.notFound().build();
         } else {
-            return ResponseEntity.ok(transfer);
+            return ResponseEntity.ok(transferModel);
         }
     }
 

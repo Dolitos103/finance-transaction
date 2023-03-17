@@ -1,28 +1,29 @@
 package com.finance.transaction.service;
 
-import com.finance.transaction.model.RequestTransfer;
-import com.finance.transaction.model.ResponseTransfer;
-import com.finance.transaction.model.Transfer;
+import com.finance.transaction.converter.RequestTransferToTransferConverter;
+import com.finance.transaction.model.RequestTransferModel;
+import com.finance.transaction.model.ResponseTransferModel;
+import com.finance.transaction.model.TransferModel;
 import com.finance.transaction.repository.TransferRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ValueTransferService implements IValidateValueAndRate {
+public class ValueTransferService implements IValidateValueAndRateService {
 
     @Autowired
     TransferRepository transferRepository;
     @Autowired
     RequestTransferToTransferConverter requestTransferToTransferConverter;
 
-    public ResponseTransfer validateValueAndRate(RequestTransfer requestTransfer){
+    public ResponseTransferModel validateValueAndRate(RequestTransferModel requestTransfer){
 
-        Transfer transfer = requestTransferToTransferConverter.convert(requestTransfer);
+        TransferModel transferModel = requestTransferToTransferConverter.convert(requestTransfer);
 
-        transferRepository.save(transfer);
+        transferRepository.save(transferModel);
 
-        ResponseTransfer responseTransfer = new ResponseTransfer();
-        responseTransfer.setResponse("success");
-        return responseTransfer;
+        ResponseTransferModel responseTransferModel = new ResponseTransferModel();
+        responseTransferModel.setResponse("success");
+        return responseTransferModel;
     }
 }

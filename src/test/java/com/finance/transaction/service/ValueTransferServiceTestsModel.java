@@ -2,7 +2,7 @@ package com.finance.transaction.service;
 
 import org.junit.jupiter.api.Test;
 
-public class ValueTransferServiceTests {
+public class ValueTransferServiceTestsModel {
 
     @Test
     public void calculateRateCaseA(){

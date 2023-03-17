@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @Table(name = "tb_transfer")
-public class Transfer {
+public class TransferModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

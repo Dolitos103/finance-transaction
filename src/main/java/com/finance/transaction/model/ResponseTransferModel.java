@@ -3,6 +3,6 @@ package com.finance.transaction.model;
 import lombok.Data;
 
 @Data
-public class ResponseTransfer {
+public class ResponseTransferModel {
     String response;
 }

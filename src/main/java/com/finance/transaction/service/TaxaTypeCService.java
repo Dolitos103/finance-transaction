@@ -1,15 +1,15 @@
 package com.finance.transaction.service;
 
-import com.finance.transaction.model.Transfer;
+import com.finance.transaction.model.TransferModel;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
-public class TaxaTypeC implements Taxa {
+public class TaxaTypeCService implements TaxaService {
     @Override
-    public Transfer throughputCalculation(Transfer transfer) {
+    public TransferModel throughputCalculation(TransferModel transferModel) {
 
         LocalDateTime currentDate = LocalDateTime.now();
-        long differenceDays = ChronoUnit.DAYS.between(currentDate, transfer.getDateScheduling());
+        long differenceDays = ChronoUnit.DAYS.between(currentDate, transferModel.getDateScheduling());
 
         double rate = 0;
 
@@ -23,8 +23,8 @@ public class TaxaTypeC implements Taxa {
             rate = 0.017; // 1.7%
         }
 
-        transfer.setValue(transfer.getValue() + transfer.getValue() * rate);
+        transferModel.setValue(transferModel.getValue() + transferModel.getValue() * rate);
 
-        return transfer;
+        return transferModel;
     }
 }
