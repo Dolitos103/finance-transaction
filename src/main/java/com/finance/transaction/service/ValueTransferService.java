@@ -7,17 +7,13 @@ import com.finance.transaction.repository.TransferRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
-
 @Service
 public class ValueTransferService implements IValidateValueAndRate {
 
     @Autowired
-    private TransferRepository transferRepository;
+    TransferRepository transferRepository;
     @Autowired
-    private RequestTransferToTransferConverter requestTransferToTransferConverter;
+    RequestTransferToTransferConverter requestTransferToTransferConverter;
 
     public ResponseTransfer validateValueAndRate(RequestTransfer requestTransfer){
 

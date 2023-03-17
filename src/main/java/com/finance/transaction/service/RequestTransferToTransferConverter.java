@@ -5,11 +5,7 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 import com.fasterxml.jackson.databind.util.Converter;
 import com.finance.transaction.model.RequestTransfer;
 import com.finance.transaction.model.Transfer;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.time.LocalDateTime;
-import java.util.Random;
 
 @Component
 public class RequestTransferToTransferConverter implements Converter<RequestTransfer, Transfer> {
