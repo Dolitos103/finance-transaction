@@ -5,7 +5,7 @@ import com.finance.transaction.model.Transfer;
 public class TaxaTypeD implements Taxa {
 
     @Override
-    public Transfer throughputCalculation(Transfer transfer) {
+    public Transfer throughputCalculation(Transfer transfer) throws Exception {
 
         Taxa taxaA = new TaxaTypeA();
         Taxa taxaB = new TaxaTypeB();
@@ -18,9 +18,8 @@ public class TaxaTypeD implements Taxa {
         } else if (transfer.getValue() > 2000) {
             taxaC.throughputCalculation(transfer);
         }else{
-            System.out.println("Erro ao tentar pegar taxa de juros");
+            throw new Exception();
         }
-
         return transfer;
     }
 }
